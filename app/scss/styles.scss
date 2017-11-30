@@ -1,0 +1,24 @@
+.home {
+  background-color: #eee;
+
+  button {
+    color: blue;
+  }
+
+  .image {
+    width: 40px;
+    padding: 15px;
+    margin: 50px 0 0 50px;
+    border: 1px solid yellowgreen;
+    animation: rotation 2s linear infinite;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  @keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+}

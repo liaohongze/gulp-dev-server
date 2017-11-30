@@ -1,0 +1,28 @@
+{
+  "name": "gulptest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-postcss": "^7.0.0",
+    "gulp-ruby-sass": "^2.1.1",
+    "gulp-sass": "^3.1.0",
+    "jshint": "^2.9.5",
+    "node-sass": "^4.7.2",
+    "postcss-reporter": "^5.0.0",
+    "postcss-scss": "^1.0.2",
+    "stylelint": "^8.3.1",
+    "stylelint-config-recess-order": "^1.2.3",
+    "stylelint-config-recommended": "^2.0.0",
+    "stylelint-config-standard": "^18.0.0"
+  }
+}
