@@ -1,12 +1,11 @@
 .home {
-  background-color: #eee;
-  margin-top: 10px; }
+  background-color: #eee; }
   .home button {
     color: blue; }
   .home .image {
-    margin: 50px 0 0 50px;
-    padding: 15px;
     width: 40px;
+    padding: 15px;
+    margin: 50px 0 0 50px;
     border: 1px solid yellowgreen;
     -webkit-animation: rotation 2s linear infinite;
     animation: rotation 2s linear infinite; }
