@@ -1,28 +1,17 @@
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
-var postcss = require('gulp-postcss');
-var reporter = require('postcss-reporter');
-var stylelint = require('stylelint');
-var syntax_scss = require('postcss-scss')
 var sass = require('gulp-sass');
+var concat = require('gulp-concat');
 var autoprefixer = require('gulp-autoprefixer');
+var minifyCSS = require('gulp-minify-css');
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 
-// var processors = [
-//   stylelint('./.stylelintrc'),
-//   reporter({
-//     clearMessages: true,
-//     throwError: true
-//   })
-// ]
-
 gulp.task('sass', function() {
-  gulp.src('app/scss/*.scss')
-    .pipe(postcss([
-      stylelint(),
-      reporter()
-    ], {syntax: syntax_scss}))
+  gulp.src(['app/scss/main.scss', 'app/scss/*.scss'])
+    .pipe(concat('styles.scss'))
     .pipe(sass())
     .pipe(autoprefixer({
       browsers: ['last 2 version', 'Firefox >= 20'],
@@ -39,7 +28,7 @@ gulp.task('jshint', function() {
     .pipe(reload({ stream:true }));
 });
 
-gulp.task('default', ['sass', 'jshint'], function () {
+gulp.task('default', ['sass', 'jshint'], function() {
   browserSync({
     server: {
       baseDir: 'app'
@@ -48,7 +37,32 @@ gulp.task('default', ['sass', 'jshint'], function () {
 
   gulp.watch('app/scss/*.scss', ['sass']);
   gulp.watch('app/js/**/*.js', ['jshint']);
-  gulp.watch('app/js/img/*.*', ['sass', 'jshint']);
   gulp.watch("app/*.html").on('change', reload);
   gulp.watch("app/page/*.html").on('change', reload);
+  gulp.watch("app/img/*.*").on('change', reload);
 });
+
+// 编译
+gulp.task('build', function() {
+  // 压缩样式文件
+  gulp.src('app/css/*.css')
+    .pipe(minifyCSS())
+    .pipe(gulp.dest('./dist/css'));
+
+  // 压缩图片
+  gulp.src('app/img/*.*')
+    .pipe(imagemin({
+      progressive: true,
+      use: [pngquant()]
+    }))
+    .pipe(gulp.dest('./dist/img'))
+
+  gulp.src('app/js/**/*')
+    .pipe(gulp.dest('./dist/js'));
+
+  gulp.src('app/page/**/*')
+    .pipe(gulp.dest('./dist/page'));
+
+  gulp.src(['app/index.html', 'app/favicon.ico', 'app/icon.png'])
+    .pipe(gulp.dest('./dist'));
+})
