@@ -65,4 +65,4 @@ gulp.task('build', function() {
 
   gulp.src(['app/index.html', 'app/favicon.ico', 'app/icon.png'])
     .pipe(gulp.dest('./dist'));
-})
+});
