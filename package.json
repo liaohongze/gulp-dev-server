@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "gulp",
-    "build": "imraf ./dist && gulp build",
+    "build": "rimraf ./dist && gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "liaohongze",
