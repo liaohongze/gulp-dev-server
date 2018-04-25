@@ -10,7 +10,7 @@ var modules = [
   // 'jquery'
 ];
 
-require(moduls, function(domReady) {
+require(modules, function(domReady) {
   domReady(function() {
     console.log('gulp-with-require');
   });
