@@ -36,5 +36,8 @@ npm-debug.log
 #ngrok
 ngrok
 
+# mac default files
+.DS_Store
+
 #dist
 dist
