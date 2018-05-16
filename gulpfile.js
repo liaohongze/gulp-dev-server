@@ -37,9 +37,9 @@ gulp.task('default', ['sass', 'jshint'], function() {
 
   gulp.watch('app/scss/*.scss', ['sass']);
   gulp.watch('app/js/**/*.js', ['jshint']);
-  gulp.watch("app/*.html").on('change', reload);
-  gulp.watch("app/page/*.html").on('change', reload);
-  gulp.watch("app/img/*.*").on('change', reload);
+  gulp.watch('app/*.html').on('change', reload);
+  gulp.watch('app/page/*.html').on('change', reload);
+  gulp.watch('app/img/*.*').on('change', reload);
 });
 
 // 编译
@@ -50,12 +50,12 @@ gulp.task('build', function() {
     .pipe(gulp.dest('./dist/css'));
 
   // 压缩图片
-  gulp.src('app/img/*.*')
+  gulp.src('app/img/**/*.*')
     .pipe(imagemin({
       progressive: true,
       use: [pngquant()]
     }))
-    .pipe(gulp.dest('./dist/img'))
+    .pipe(gulp.dest('./dist/img'));
 
   gulp.src('app/js/**/*')
     .pipe(gulp.dest('./dist/js'));
