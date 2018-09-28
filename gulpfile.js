@@ -63,6 +63,6 @@ gulp.task('build', function() {
   gulp.src('app/page/**/*')
     .pipe(gulp.dest('./dist/page'));
 
-  gulp.src(['app/index.html', 'app/favicon.ico', 'app/icon.png'])
+  gulp.src(['app/*.html', 'app/favicon.ico', 'app/icon.png'])
     .pipe(gulp.dest('./dist'));
 });
